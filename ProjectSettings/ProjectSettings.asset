@@ -154,7 +154,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.CloudStudio.rightordie
-    Standalone: com.UnityTechnologies.VikingVillage
+    Standalone: com.CloudStudio.right-or-die
     iPhone: com.Company.ProductName
     tvOS: com.Company.ProductName
   buildNumber:
