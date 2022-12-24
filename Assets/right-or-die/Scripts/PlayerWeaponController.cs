@@ -10,27 +10,32 @@ public class PlayerWeaponController : MonoBehaviour
     /// <Summary>
     /// どの音を再生するかを設定します
     /// </Summary>
-    //[SerializeField] private AudioClip _se_sword_collision;
+    [SerializeField] private AudioClip _se_sword_collision;
 
     //音を再生するためのコンポーネントの情報を格納する変数です
-    private AudioSource _audioSource;
+    [SerializeField] private AudioSource _audioSource;
 
     //パーティクルを発生するためのコンポーネントの情報を格納する変数です
-    private ParticleSystem _particle;
+    //[SerializeField] private ParticleSystem _particle;
+
+    //Colliderの操作を行うための変数です
+    [SerializeField] private Collider _collider;
 
     //コントローラーを振動させる際に使用する変数です
     private InputDevice _inputDevice;
 
-    //コントローラーを振動させる際に使用する変数です
-    private Collider _collider;
-
     private void Start()
+    {
+
+    }
+
+    private void Reset()
     {
         //変数にコンポーネントの情報を取得します
         _audioSource = GetComponent<AudioSource>();
 
         //パーティクルはプレイヤーの武器のルートコンポーネントではなく子コンポーネントについているため、子から取得する関数を使います
-        _particle = GetComponentInChildren<ParticleSystem>();
+        //_particle = GetComponentInChildren<ParticleSystem>();
 
         _collider = GetComponent<Collider>();
     }
@@ -73,36 +78,29 @@ public class PlayerWeaponController : MonoBehaviour
     }
 
     /// <Summary>
-    /// プレイヤーの武器が敵の武器に設定したColliderに触れると火花を散らせて衝突音を鳴らす
-    /// </Summary>
-    private void OnCollisionEnter(Collision other)
-    {
-        //当たったのが敵の武器かどうかを判定します
-        if (other.gameObject.tag == "EnemyWeapon")
-        {
-            //武器が衝突する音を鳴らします
-            //_audioSource.PlayOneShot(_se_sword_collision);
-
-            //火花を散らせます
-            _particle.Play();
-        }
-
-    }
-
-
-
-    /// <Summary>
+    /// プレイヤーの武器が敵の武器に設定したColliderに触れると火花を散らせて衝突音を鳴らします
     /// プレイヤーの武器が敵本体に設定したColliderに触れるとコントローラーを振動させます
-    /// 敵本体のColliderは当たっても剣がすり抜けるようにIs Triggerをオンにしているため、衝突判定を取るにはOnTriggerEnterを使用します
+    /// 移動時にも武器がブレないようにIs Triggerをオンにしているため、衝突判定を取るにはOnTriggerEnterを使用します
     /// </Summary>
     private void OnTriggerEnter(Collider other)
     {
+        //当たったのが敵の武器かどうかを判定します
+        if (other.gameObject.CompareTag("EnemyWeapon"))
+        {
+            //武器が衝突する音を鳴らします
+            _audioSource.PlayOneShot(_se_sword_collision);
+
+            //火花を散らせます
+            //_particle.Play();
+        }
+
         //当たったのが敵かどうかを判定します
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.CompareTag("Enemy"))
         {
             //コントローラーを振動させます。3つ目の引数が振動させる時間です
             _inputDevice.SendHapticImpulse(0, 0.5f, 0.1f);
         }
+
     }
 
 

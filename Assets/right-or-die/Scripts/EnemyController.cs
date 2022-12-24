@@ -66,12 +66,11 @@ public class EnemyController : MonoBehaviour
 
     /// <Summary>
     /// プレイヤーの武器が敵本体に設定したColliderに触れるとのけぞるアニメーションをオンにする
-    /// 敵本体のColliderは当たっても剣がすり抜けるようにIs Triggerをオンにしているため、衝突判定を取るにはOnTriggerEnterを使用します
     /// </Summary>
     private void OnTriggerEnter(Collider other)
     {
         //当たったのがプレイヤーの武器かどうかを判定します
-        if (other.gameObject.tag == "PlayerWeapon")
+        if (other.gameObject.CompareTag("PlayerWeapon"))
         {
             //敵に攻撃がヒットした音を鳴らします
             _audioSource.PlayOneShot(_se_attack_hit);
