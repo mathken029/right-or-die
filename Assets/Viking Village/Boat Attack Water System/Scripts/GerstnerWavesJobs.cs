@@ -51,7 +51,7 @@ namespace WaterSystem
             _waterHeightHandle.Complete();
 
             //Cleanup native arrays
-            _waveData.Dispose();
+            _waveData.Dispose(); 
             _positions.Dispose();
             _wavePos.Dispose();
             _waveNormal.Dispose();
