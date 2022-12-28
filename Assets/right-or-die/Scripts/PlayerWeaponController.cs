@@ -16,7 +16,7 @@ public class PlayerWeaponController : MonoBehaviour
     [SerializeField] private AudioSource _audioSource;
 
     //パーティクルを発生するためのコンポーネントの情報を格納する変数です
-    //[SerializeField] private ParticleSystem _particle;
+    [SerializeField] private ParticleSystem _particle;
 
     //Colliderの操作を行うための変数です
     [SerializeField] private Collider _collider;
@@ -35,7 +35,7 @@ public class PlayerWeaponController : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
 
         //パーティクルはプレイヤーの武器のルートコンポーネントではなく子コンポーネントについているため、子から取得する関数を使います
-        //_particle = GetComponentInChildren<ParticleSystem>();
+        _particle = GetComponentInChildren<ParticleSystem>();
 
         _collider = GetComponent<Collider>();
     }
@@ -100,20 +100,16 @@ public class PlayerWeaponController : MonoBehaviour
             _audioSource.PlayOneShot(_se_sword_collision);
 
             //火花を散らせます
-            //_particle.Play();
+            _particle.Play();
         }
 
         //当たったのが敵かどうかを判定します
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("OnTriggerEnter Enemy");
-            Debug.Log(_inputDevice);
-            Debug.Log(_inputDevice.isValid);
             //コントローラーを振動させます。3つ目の引数が振動させる時間です
             _inputDevice.SendHapticImpulse(0, 0.5f, 0.1f);
         }
 
     }
-
 
 }
