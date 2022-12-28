@@ -45,9 +45,7 @@ public class PlayerWeaponController : MonoBehaviour
     /// </Summary>
     public void OnSelectEnter()
     {
-
         _collider.isTrigger = true;
-
     }
 
 

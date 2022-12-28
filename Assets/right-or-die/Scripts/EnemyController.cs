@@ -21,7 +21,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private AudioClip _se_death;
 
     //音を再生するためのコンポーネントの情報を格納する変数です
-    private AudioSource _audioSource;
+    [SerializeField] private AudioSource _audioSource;
 
     /// <Summary>
     /// この変数に対してUnityの画面上でプレイヤーを設定することで、敵がプレイヤーに向かいます
@@ -42,15 +42,20 @@ public class EnemyController : MonoBehaviour
     /// <Summary>
     /// この変数に対してターゲットとしてプレイヤーを指定することで敵がプレイヤーに向かいます
     /// </Summary>
-    private NavMeshAgent _agent;
+    [SerializeField] private NavMeshAgent _navMeshAgent;
 
     /// <Summary>
     /// この変数の中の値を変更することで対応したアニメーションが再生されます
     /// </Summary>
-    private Animator _animator;
+    [SerializeField] private Animator _animator;
 
 
     private void Start()
+    {
+
+    }
+
+    private void Reset()
     {
         //変数に子コンポーネントの音を再生するコンポーネントを取得します
         //子コンポーネントにすることで再生する座標を変更することができます
@@ -60,10 +65,8 @@ public class EnemyController : MonoBehaviour
         _animator = GetComponent<Animator>();
 
         //NavMeshAgentの変数に自分自身（敵）を設定します
-        _agent = GetComponent<NavMeshAgent>();
+        _navMeshAgent = GetComponent<NavMeshAgent>();
     }
-
-
     /// <Summary>
     /// プレイヤーの武器が敵本体に設定したColliderに触れるとのけぞるアニメーションをオンにする
     /// </Summary>
@@ -92,8 +95,6 @@ public class EnemyController : MonoBehaviour
             _animator.SetTrigger(AnimationGotHitHash);
 
         }
-
-
     }
 
     /// <Summary>
@@ -126,13 +127,13 @@ public class EnemyController : MonoBehaviour
     /// ゲームの起動中継続して実行される処理です
     /// </Summary>
     private void Update()
-    {        
+    {
         //プレイヤーの位置まで移動します
-        _agent.SetDestination(_target.position);
+        _navMeshAgent.SetDestination(_target.position);
 
         //敵が動いたら歩行アニメーションを再生します
         //NavMeshAgentの変数のパラメータであるvelocity.magnitudeが速度を表すので、それが少しでも動いたらというのを> 0.1fという形で表します
-        if (_agent.velocity.magnitude > 0.1f)
+        if (_navMeshAgent.velocity.magnitude > 0.1f)
         {
             _animator.SetBool(AnimationMovingHash, true);
         }
@@ -142,7 +143,7 @@ public class EnemyController : MonoBehaviour
         }
 
         //プレイヤーと敵の距離がNavMeshAgentで設定している停止距離より少し近くなったら敵が攻撃を開始します
-        if (Vector3.Distance(_target.position, _agent.transform.position) < _agent.stoppingDistance + 0.5f)
+        if (Vector3.Distance(_target.position, _navMeshAgent.transform.position) < _navMeshAgent.stoppingDistance + 0.5f)
         {
             //プレイヤーの位置から自分の位置を引くことで、敵から見たプレイヤーの位置を算出します（★原理がよくわかっていない） https://gomafrontier.com/unity/2883
             //y軸を固定することで敵が上を向かないようにします

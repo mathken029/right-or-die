@@ -13,22 +13,25 @@ public class EnemyWeaponController : MonoBehaviour
     /// <Summary>
     /// この変数の中の値を変更することでこの武器を持つ敵の対応したアニメーションが再生されます
     /// </Summary>
-    private Animator _animator;
+    [SerializeField] private Animator _animator;
 
     /// <Summary>
     /// この変数の中の値を変更することで武器の当たり判定の有無を操作します
     /// </Summary>
-    private BoxCollider _boxCollider;
+    [SerializeField] private BoxCollider _boxCollider;
 
     private void Start()
+    {
+        //攻撃モーションが始まるまでは当たり判定を無効化します
+        DisableAttack();
+    }
+
+    private void Reset()
     {
         //Animatorの変数に親オブジェクトの敵自身を設定します
         _animator = GetComponentInParent<Animator>();
 
         _boxCollider = GetComponentInParent<BoxCollider>();
-
-        //攻撃モーションが始まるまでは当たり判定を無効化します
-        DisableAttack();
     }
 
     /// <Summary>
@@ -52,7 +55,7 @@ public class EnemyWeaponController : MonoBehaviour
     /// <Summary>
     /// プレイヤーの武器が敵の武器に設定したColliderに触れると敵がのけぞるアニメーションをオンにします
     /// </Summary>
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         //当たったのがプレイヤーの武器かどうかを判定します
         if (other.gameObject.tag == "PlayerWeapon")
