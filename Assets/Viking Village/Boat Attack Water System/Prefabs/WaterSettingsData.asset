@@ -16,13 +16,13 @@ MonoBehaviour:
   depthMapCullingMask:
     serializedVersion: 2
     m_Bits: 65536
-  refType: 2
+  refType: 1
   planarSettings:
     m_ResolutionMultiplier: 2
-    m_ClipPlaneOffset: 0
+    m_ClipPlaneOffset: 0.05
     m_ReflectLayers:
       serializedVersion: 2
-      m_Bits: 71680
+      m_Bits: 0
     m_Shadows: 0
   cubemapRefType: {fileID: 8900000, guid: d1afee587f35ed142930c59282bd0cd7, type: 3}
   isInfinite: 0

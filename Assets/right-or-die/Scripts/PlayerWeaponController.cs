@@ -41,36 +41,47 @@ public class PlayerWeaponController : MonoBehaviour
     }
 
     /// <Summary>
-    /// プレイヤーが武器を持とうとするときに武器の重力を無くして、プレイヤーが勝手に移動しないようにします
+    /// isTriggerを設定することで武器を持ったときにプレイヤーが勝手に移動しないようにし、移動したときに武器がブレないようにします
     /// </Summary>
-    public void OnSelectEnter()
+    private void EnableIsTrigger()
     {
         _collider.isTrigger = true;
     }
 
+    /// <Summary>
+    /// isTriggerを解除することで落としても地面に乗るようにします
+    /// </Summary>
+    private void DisableIsTrigger()
+    {
+        _collider.isTrigger = false;
+    }
+
 
     /// <Summary>
-    /// 左手のXR Ray InteractorのHover Enteredから呼び出され、武器を持ったのが左手であると設定します
+    /// 左手のXR Ray Interactorから呼び出され、武器を持ったのが左手であると設定します
     /// </Summary>
-    public void AttachXRNodeLeftHand()
+    public void OnSelectEnteredLeftHand()
     {
+        EnableIsTrigger();
         _inputDevice = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
     }
 
     /// <Summary>
-    /// 右手のXR Ray InteractorのHover Enteredから呼び出され、武器を持ったのが右手であると設定します
+    /// 右手のXR Ray Interactorから呼び出され、武器を持ったのが右手であると設定します
     /// </Summary>
-    public void AttachXRNodeRightHand()
+    public void OnSelectEnteredRightHand()
     {
+        EnableIsTrigger();
         _inputDevice = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
-
     }
 
     /// <Summary>
     /// 両手のXR Ray InteractorのHover Exitedから呼び出され、武器を離したと設定します
     /// </Summary>
-    public void DetachXRNodeHand()
+    public void OnSelectExited()
     {
+        DisableIsTrigger();
+
         //LeftEyeがXRNode変数の初期値なので初期値に戻します
         _inputDevice = InputDevices.GetDeviceAtXRNode(XRNode.LeftEye);
     }
@@ -95,6 +106,9 @@ public class PlayerWeaponController : MonoBehaviour
         //当たったのが敵かどうかを判定します
         if (other.gameObject.CompareTag("Enemy"))
         {
+            Debug.Log("OnTriggerEnter Enemy");
+            Debug.Log(_inputDevice);
+            Debug.Log(_inputDevice.isValid);
             //コントローラーを振動させます。3つ目の引数が振動させる時間です
             _inputDevice.SendHapticImpulse(0, 0.5f, 0.1f);
         }
