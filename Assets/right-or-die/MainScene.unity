@@ -1066,6 +1066,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 32693361}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &33135825 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400002, guid: 412b92d4feeb9c548bfa98f62c4d1022,
+    type: 3}
+  m_PrefabInstance: {fileID: 631761439}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &33496478
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23289,7 +23295,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 9e5230a6e8401824085321a18239c067, type: 2}
     - target: {fileID: 9500000, guid: 412b92d4feeb9c548bfa98f62c4d1022, type: 3}
       propertyPath: m_ApplyRootMotion
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 412b92d4feeb9c548bfa98f62c4d1022, type: 3}
       propertyPath: m_Enabled
@@ -62142,12 +62148,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _se_attack_hit: {fileID: 8300000, guid: 35d1285f4f274f240aaecef93dfe3abc, type: 3}
   _se_death: {fileID: 8300000, guid: 6227ded3a295660458d5e9a70c25844b, type: 3}
-  _audioSource: {fileID: 0}
+  _audioSource: {fileID: 1420975047}
   _target: {fileID: 2109722938}
   _enemyWeaponController: {fileID: 1205490210}
   _enemyHitPoint: 3
-  _navMeshAgent: {fileID: 0}
-  _animator: {fileID: 0}
+  _navMeshAgent: {fileID: 1690041524}
+  _animator: {fileID: 1690041527}
+--- !u!95 &1690041527 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: 412b92d4feeb9c548bfa98f62c4d1022,
+    type: 3}
+  m_PrefabInstance: {fileID: 631761439}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1690041528 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400096, guid: 412b92d4feeb9c548bfa98f62c4d1022,
@@ -65395,14 +65407,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797284366}
-  m_LocalRotation: {x: 0.76235616, y: -0.052367263, z: -0.12353491, w: 0.6330955}
-  m_LocalPosition: {x: -0.064, y: 0.083, z: -0.026}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalRotation: {x: 0.36659923, y: -0.5839349, z: 0.5963019, w: -0.41115576}
+  m_LocalPosition: {x: -0.144, y: 0.163, z: 0.048}
+  m_LocalScale: {x: 0.6999999, y: 0.69999915, z: 0.6999993}
   m_Children:
   - {fileID: 1205490209}
-  m_Father: {fileID: 2027522375}
+  m_Father: {fileID: 33135825}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 72.241, y: -123.391, z: -129.23}
+  m_LocalEulerAnglesHint: {x: 156.738, y: -93.073, z: -268.749}
 --- !u!1001 &1797985189
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69746,42 +69758,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3c9d0f652fa2454eb70f623ca29ddc4, type: 3}
---- !u!84 &1921248824
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: WaterDepthMap
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 3
-  m_Width: 1024
-  m_Height: 1024
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthFormat: 2
-  m_ColorFormat: 142
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1001 &1921493134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70641,6 +70617,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3c9d0f652fa2454eb70f623ca29ddc4, type: 3}
+--- !u!84 &1949266011
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: WaterDepthMap
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 3
+  m_Width: 1024
+  m_Height: 1024
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthFormat: 2
+  m_ColorFormat: 142
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1001 &1950033176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73400,12 +73412,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caaa42002c2d13d439d5f77307462e84, type: 3}
---- !u!4 &2027522375 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400178, guid: 412b92d4feeb9c548bfa98f62c4d1022,
-    type: 3}
-  m_PrefabInstance: {fileID: 631761439}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2030085550
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -78875,6 +78881,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ellen
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405513693613239584, guid: c6ca54ea1a6a67647973c2c45c0187bc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2405513694368096163, guid: c6ca54ea1a6a67647973c2c45c0187bc,
         type: 3}
