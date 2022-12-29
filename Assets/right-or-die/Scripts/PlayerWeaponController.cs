@@ -29,6 +29,7 @@ public class PlayerWeaponController : MonoBehaviour
 
     }
 
+/*
     private void Reset()
     {
         //変数にコンポーネントの情報を取得します
@@ -39,6 +40,7 @@ public class PlayerWeaponController : MonoBehaviour
 
         _collider = GetComponent<Collider>();
     }
+*/
 
     /// <Summary>
     /// isTriggerを設定することで武器を持ったときにプレイヤーが勝手に移動しないようにし、移動したときに武器がブレないようにします

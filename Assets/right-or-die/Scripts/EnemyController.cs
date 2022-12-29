@@ -14,6 +14,17 @@ public class EnemyController : MonoBehaviour
     private static readonly int AnimationAttackingHash = Animator.StringToHash("Attacking");
     private static readonly int AnimationDeadHash = Animator.StringToHash("Dead");
 
+
+    /// <Summary>
+    /// 敵が倒れるまでにかかる時間です
+    /// </Summary>
+    private readonly float _timeEnemyDead = 1.3f;
+
+    /// <Summary>
+    /// 敵を倒したときのスローを解除するまでの時間です
+    /// </Summary>
+    private readonly float _delayTime = 2.3f;
+
     /// <Summary>
     /// どの音を再生するかを設定します
     /// </Summary>
@@ -49,26 +60,14 @@ public class EnemyController : MonoBehaviour
     /// </Summary>
     [SerializeField] private Animator _animator;
 
-
-    private void Start()
-    {
-
-    }
-
-    private void Reset()
-    {
-        //変数に子コンポーネントの音を再生するコンポーネントを取得します
-        //子コンポーネントにすることで再生する座標を変更することができます
-        _audioSource = GetComponentInChildren<AudioSource>();
-
-        //Animatorの変数に自分自身（敵）を設定します
-        _animator = GetComponent<Animator>();
-
-        //NavMeshAgentの変数に自分自身（敵）を設定します
-        _navMeshAgent = GetComponent<NavMeshAgent>();
-    }
     /// <Summary>
-    /// プレイヤーの武器が敵本体に設定したColliderに触れるとのけぞるアニメーションをオンにする
+    /// スローの速さを調整します
+    /// </Summary>
+    [SerializeField] private float _timeScale;
+
+
+    /// <Summary>
+    /// プレイヤーの武器が敵本体に設定したColliderに触れると実行される処理を書きます
     /// </Summary>
     private void OnTriggerEnter(Collider other)
     {
@@ -84,17 +83,35 @@ public class EnemyController : MonoBehaviour
             //敵のヒットポイントが無くなったら倒れてリスポーンします
             if (_enemyHitPoint <= 0)
             {
+                //時間を一定時間遅くした後にもとに戻します
+                StartCoroutine(DelayCoroutine());
+
                 //敵が倒れるモーションを再生します
                 _animator.SetTrigger(AnimationDeadHash);
 
                 //倒れるモーションを待ってから敵を消滅させます
-                Destroy(gameObject, 1.3f);
+                Destroy(gameObject, _timeEnemyDead);
             }
 
             //敵の攻撃が当たったことを示すパラメーターをオンにします
             _animator.SetTrigger(AnimationGotHitHash);
 
         }
+    }
+
+    /// <Summary>
+    /// 敵を倒した際にスローにしてから戻します
+    /// </Summary>
+    private IEnumerator DelayCoroutine()
+    {
+        //時間の流れを遅くします
+        Time.timeScale = _timeScale;
+
+        // 敵が倒れるまで待ちます
+        yield return new WaitForSecondsRealtime(_delayTime);
+
+        //時間の流れを戻します
+        Time.timeScale = 1.0f;
     }
 
     /// <Summary>
