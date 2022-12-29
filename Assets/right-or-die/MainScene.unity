@@ -4503,7 +4503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33f0a695079b9334f9ca307e0ff11062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _se_sword_collision: {fileID: 8300000, guid: 35d1285f4f274f240aaecef93dfe3abc, type: 3}
+  _se_sword_collision: {fileID: 8300000, guid: 73ab6aeef95a14fd68d6a2a1e3580985, type: 3}
   _audioSource: {fileID: 104199872}
   _particle: {fileID: 1843446506}
   _collider: {fileID: 104199868}
@@ -9453,6 +9453,42 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 262359424}
   m_PrefabAsset: {fileID: 0}
+--- !u!84 &263890506
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: WaterDepthMap
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 3
+  m_Width: 1024
+  m_Height: 1024
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthFormat: 2
+  m_ColorFormat: 142
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1001 &265660822
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39692,7 +39728,7 @@ PrefabInstance:
     - target: {fileID: 6598815579406187026, guid: 9f5a24a380916d14db9775daab4fe333,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187027, guid: 9f5a24a380916d14db9775daab4fe333,
         type: 3}
@@ -66802,6 +66838,7 @@ MonoBehaviour:
   _enemyHitPoint: 3
   _navMeshAgent: {fileID: 1690041524}
   _animator: {fileID: 1690041527}
+  _timeScale: 0
 --- !u!95 &1690041527 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 9500000, guid: 412b92d4feeb9c548bfa98f62c4d1022,
@@ -88333,9 +88370,24 @@ PrefabInstance:
       objectReference: {fileID: 2109722938}
     - target: {fileID: 2405513694368096163, guid: c6ca54ea1a6a67647973c2c45c0187bc,
         type: 3}
+      propertyPath: _se_death
+      value: 
+      objectReference: {fileID: 8300000, guid: fc07b7c9c02ee7543b3821154f63ac21, type: 3}
+    - target: {fileID: 2405513694368096163, guid: c6ca54ea1a6a67647973c2c45c0187bc,
+        type: 3}
+      propertyPath: _timeScale
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405513694368096163, guid: c6ca54ea1a6a67647973c2c45c0187bc,
+        type: 3}
+      propertyPath: _enemyHitPoint
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405513694368096163, guid: c6ca54ea1a6a67647973c2c45c0187bc,
+        type: 3}
       propertyPath: _se_attack_hit
       value: 
-      objectReference: {fileID: 8300000, guid: 001680789ba7bae4b9a583225cc8fec1, type: 3}
+      objectReference: {fileID: 8300000, guid: 82a66f5d6bc124ba295cbf45801a1340, type: 3}
     - target: {fileID: 2405513694740992329, guid: c6ca54ea1a6a67647973c2c45c0187bc,
         type: 3}
       propertyPath: m_Size.x
