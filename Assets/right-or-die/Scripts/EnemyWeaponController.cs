@@ -26,14 +26,6 @@ public class EnemyWeaponController : MonoBehaviour
         DisableAttack();
     }
 
-    private void Reset()
-    {
-        //Animatorの変数に親オブジェクトの敵自身を設定します
-        _animator = GetComponentInParent<Animator>();
-
-        _boxCollider = GetComponentInParent<BoxCollider>();
-    }
-
     /// <Summary>
     /// 武器のColliderを有効にします。
     /// 色々なシチュエーションで使えるように他のスクリプトから呼び出せるようにpublicにします。

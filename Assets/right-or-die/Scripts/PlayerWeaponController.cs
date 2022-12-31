@@ -15,8 +15,10 @@ public class PlayerWeaponController : MonoBehaviour
     //音を再生するためのコンポーネントの情報を格納する変数です
     [SerializeField] private AudioSource _audioSource;
 
-    //パーティクルを発生するためのコンポーネントの情報を格納する変数です
-    [SerializeField] private ParticleSystem _particle;
+    /// <Summary>
+    /// この変数を実行することでエフェクトが実行されます
+    /// </Summary>
+    [SerializeField] private ParticleSystem _particleSystem;
 
     //Colliderの操作を行うための変数です
     [SerializeField] private Collider _collider;
@@ -28,19 +30,6 @@ public class PlayerWeaponController : MonoBehaviour
     {
 
     }
-
-/*
-    private void Reset()
-    {
-        //変数にコンポーネントの情報を取得します
-        _audioSource = GetComponent<AudioSource>();
-
-        //パーティクルはプレイヤーの武器のルートコンポーネントではなく子コンポーネントについているため、子から取得する関数を使います
-        _particle = GetComponentInChildren<ParticleSystem>();
-
-        _collider = GetComponent<Collider>();
-    }
-*/
 
     /// <Summary>
     /// isTriggerを設定することで武器を持ったときにプレイヤーが勝手に移動しないようにし、移動したときに武器がブレないようにします
@@ -102,7 +91,7 @@ public class PlayerWeaponController : MonoBehaviour
             _audioSource.PlayOneShot(_se_sword_collision);
 
             //火花を散らせます
-            _particle.Play();
+            _particleSystem.Play();
         }
 
         //当たったのが敵かどうかを判定します

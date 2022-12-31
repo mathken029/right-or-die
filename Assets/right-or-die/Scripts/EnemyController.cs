@@ -65,6 +65,12 @@ public class EnemyController : MonoBehaviour
     /// </Summary>
     [SerializeField] private float _timeScale;
 
+    /// <Summary>
+    /// この変数を実行することでエフェクトが実行されます
+    /// </Summary>
+    [SerializeField] private ParticleSystem _particleSystem;
+
+
 
     /// <Summary>
     /// プレイヤーの武器が敵本体に設定したColliderに触れると実行される処理を書きます
@@ -85,6 +91,9 @@ public class EnemyController : MonoBehaviour
             {
                 //時間を一定時間遅くした後にもとに戻します
                 StartCoroutine(DelayCoroutine());
+
+                //ショックウェーブを発生させます
+                _particleSystem.Play();
 
                 //敵が倒れるモーションを再生します
                 _animator.SetTrigger(AnimationDeadHash);
