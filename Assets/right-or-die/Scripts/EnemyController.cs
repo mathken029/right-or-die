@@ -70,6 +70,13 @@ public class EnemyController : MonoBehaviour
     /// </Summary>
     [SerializeField] private ParticleSystem _particleSystem;
 
+    /// <Summary>
+    /// 敵にダメージを与えてヒットポイントを減らします
+    /// </Summary>
+    public void Damage(float _enemyHitPoint)
+    {
+        _enemyHitPoint--;
+    }
 
 
     /// <Summary>
@@ -84,7 +91,7 @@ public class EnemyController : MonoBehaviour
             _audioSource.PlayOneShot(_se_attack_hit);
 
             //敵のヒットポイントを減らします
-            _enemyHitPoint--;
+            Damage(_enemyHitPoint);
 
             //敵のヒットポイントが無くなったら倒れてリスポーンします
             if (_enemyHitPoint <= 0)
