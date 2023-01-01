@@ -73,9 +73,10 @@ public class EnemyController : MonoBehaviour
     /// <Summary>
     /// 敵にダメージを与えてヒットポイントを減らします
     /// </Summary>
-    public void Damage(float _enemyHitPoint)
+    public float Damage(float inputEnemyHitPoint)
     {
-        _enemyHitPoint--;
+        inputEnemyHitPoint--;
+        return inputEnemyHitPoint;
     }
 
 
@@ -91,7 +92,7 @@ public class EnemyController : MonoBehaviour
             _audioSource.PlayOneShot(_se_attack_hit);
 
             //敵のヒットポイントを減らします
-            Damage(_enemyHitPoint);
+            _enemyHitPoint = Damage(_enemyHitPoint);
 
             //敵のヒットポイントが無くなったら倒れてリスポーンします
             if (_enemyHitPoint <= 0)

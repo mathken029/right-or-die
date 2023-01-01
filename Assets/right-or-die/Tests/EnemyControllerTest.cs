@@ -27,11 +27,10 @@ public class EnemyControllerTest
     public void DamageTest()
     {
         float _enemyHitpoint = 1;
-        float _enemyHitpointBefore = _enemyHitpoint;
         EnemyController _enemyController = new EnemyController();
 
-        _enemyController.Damage(_enemyHitpoint);
-        Assert.That(_enemyHitpoint == _enemyHitpointBefore - 1);
+        float _enemyHitpointDamaged = _enemyController.Damage(_enemyHitpoint);
+        Assert.That(_enemyHitpointDamaged == _enemyHitpoint - 1);
     }
 
 }
