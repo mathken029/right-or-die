@@ -72,6 +72,7 @@ public class EnemyController : MonoBehaviour
 
     /// <Summary>
     /// 敵にダメージを与えてヒットポイントを減らします
+    /// 将来的にステータス異常などプレイヤーの武器以外からのダメージを想定してパブリックにします
     /// </Summary>
     public float Damage(float inputEnemyHitPoint)
     {
