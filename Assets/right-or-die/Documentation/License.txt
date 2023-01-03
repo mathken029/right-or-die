@@ -11,6 +11,3 @@ Unity-Chan! Model <https://assetstore.unity.com/packages/3d/characters/unity-cha
 
 Animation Clip：
 3D Game Kit - Character Pack <https://assetstore.unity.com/packages/3d/3d-game-kit-character-pack-135217>
-
-UniVRM（VRMのインポート）：
-https://github.com/vrm-c/UniVRM/blob/master/LICENSE.txt
